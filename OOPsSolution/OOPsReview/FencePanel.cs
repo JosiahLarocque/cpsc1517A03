@@ -97,5 +97,28 @@ namespace OOPsReview
         //     a) data is missing: null
         //     b) data is present and is of the right datatype
         public double? Price { get; set; }
+
+        //constructor
+
+        //either you code your constructors or you omit your
+        //   constructors
+        //if you omit constructors then the system will initialize
+        //   your data members to the natural system defaults for
+        //   that data member datatype.
+        //if you code any constructor you are responsible for coding
+        //  all constructors to be used by this class
+
+        //Default
+        //Similates the system initialization of your data
+        //default execsutes on a : new FencePanel();
+        public FencePanel()
+        {
+            //optionally you can override the system values with your
+            //   own values
+            Height = 6.0;
+            Width = 8.0; 
+            //the remainder of your data value would be the system values
+
+        }
     }
 }
