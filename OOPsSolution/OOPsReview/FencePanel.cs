@@ -120,5 +120,38 @@ namespace OOPsReview
             //the remainder of your data value would be the system values
 
         }
-    }
-}
+
+        //Greedie
+        //the constructor has a list of parameters which will receive
+        //    an argument value for each property in the class
+        public FencePanel(double height, double width, string style, double? price)
+        {
+            Height = height;
+            Width = width;
+            Style = style;
+            Price = price;
+        }
+
+        //Behaviours (a.k.a. methods)
+        public double EstimatedNumberOfPanels(double linearLength)
+        {
+            //You could use either the property Width or the
+            //    data member _Width
+            //Using the property ensures all validation or excess logic
+            //   is in play
+            double numberofpanels = linearLength / Width;   //_Width
+            return numberofpanels;
+        }
+
+        public double FenceArea(double linearLength)
+        {
+            return linearLength * Height;
+        }
+
+
+        
+
+
+        
+    }//eoc
+}//eon
