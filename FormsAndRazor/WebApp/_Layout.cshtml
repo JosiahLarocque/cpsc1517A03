@@ -4,20 +4,19 @@
     <title>@Page.Title</title>
     @RenderSection("head", required: false)
 
-
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Content/Scripts/jquery-3.3.1.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
+    
 </head>
 <body>
-    <div>
-        
-            @RenderSection("banner", required: false)
-            
+    <div class="container-fluid">
         <div class="jumbotron">
-            <h1>Razor Sample</h1>
+
+            @RenderSection("banner", required: false)
+            @RenderPage("~/_Menu.cshtml")
         </div>
+        @RenderBody()
     </div>
-    @RenderBody()
 </body>
 </html>
