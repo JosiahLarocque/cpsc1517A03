@@ -25,7 +25,7 @@
     //   in the command.
     //Placeholders are indexed (start at 0)
     //Your query can be coded on several physical lines
-    var sqlcommand = "SELECT RegionID, RegionDescription "
+    var sqlcommand = @"SELECT RegionID, RegionDescription "
                     + "FROM Region "
                     + "WHERE RegionID = @0";
 
@@ -88,7 +88,7 @@ else
         <div class="col-6">
             <div class="offset-1">
                 <label id="lblRegionArg">Enter Region ID:</label>&nbsp;&nbsp;
-                <input type="text" id="RegionArg" name="RegionArg" value="@regionarg" placeholder="region id" textmode="number"/>
+                <input type="number" id="RegionArg" name="RegionArg" value="@regionarg" placeholder="region id" textmode="number"/>
                 <br /><br />
                 <button type="submit" id="theButton" name="theButton" value="submit" class="btn btn-primary">Fetch</button>&nbsp;&nbsp;
                 <button type="submit" id="theButton" name="theButton" value="Reset" class="btn btn-light">Reset</button>
