@@ -15,7 +15,38 @@
 
 @if (IsPost)
 {
-
+    //What was selected?
+    var choice = Request.Form["CategoryList"];
+    if (choice.Equals("0"))
+    {
+        <p style="color:Highlight">Make a selection to view desired products.</p>
+    }
+    else
+    {
+        //optionally
+        //one check if there are products for the selection
+        // then act accordingly
+        //query if products exists for selected categoryid
+        var productQuery = @"SELECT ProductID
+                             FROM Products
+                             WHERE CategoryID = @0";
+        var productInfo = db.Query(productQuery, choice);
+        if (productInfo.Count() == 0)
+        {
+            <p style="color:Highlight">No products for the selected category.</p>
+        }
+        else
+        {
+            //how to pass a value from page to page
+            //depending on the security aspect of the data
+            //  you will pass it internal or external
+            //our categoryid is not sensitive 
+            //the Get method will display your data value on the url
+            //syntax: pagename.cshtml?labelname=value[&labelname=value ...]
+            //use the Response.Redirect() to go to another page
+            Response.Redirect("WebGridDisplay.cshtml?cid=" + choice);
+        }
+    }
 }
 else
 {
