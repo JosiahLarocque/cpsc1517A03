@@ -25,7 +25,40 @@
     var supplierlist = db.Query(supplierquery);
     var categorylist = db.Query(categoryquery);
 
+    Validation.Add("ProductName",
+        Validator.Required("Product Name is Required"),
+        Validator.StringLength(160,1,"Product name is too long")
+        );
+
+    Validation.Add("QuantityPerUnit",
+        Validator.StringLength(160,0,"Product name is too long")
+        );
+
+    Validation.Add("UnitPrice",
+        Validator.Range(0.0, double.MaxValue, "Unit price needs to be 0.00 or more"));
+
+    Validation.Add("UnitsInStock",
+        Validator.Integer("Units in stock must be a whole number"), 
+        Validator.Range(0.0, 32767.0, "Unit in stock needs to be 0 to 32767."));
+
+     Validation.Add("UnitsOnOrder",
+        Validator.Integer("Units in stock must be a whole number"), 
+        Validator.Range(0.0, 32767.0, "Unit in stock needs to be 0 to 32767."));
+
+     Validation.Add("ReorderLevel",
+        Validator.Integer("Units in stock must be a whole number"), 
+        Validator.Range(0.0, 32767.0, "Reorder level needs to be 0 to 32767."));
+
+    //sample of using .EqualsTo(0
+    //Validation.Add("Password",
+    //   Validator.EqualTo("confirmPassword", "Password invalid confirmation"));
+
+    //sample of matching patterns using .Regex()
+    //Validation.Add("PostalCode",
+    //  Validator.Regex(@"^[A-Za-z][0-9]A-Za-z][0-9]A-Za-z][0-9]$","PostalCode is invalid format (T6T6T6)"))
+
 }
+
 
 @section banner{
     <h1>Database: CRUD Product - Insert</h1>
