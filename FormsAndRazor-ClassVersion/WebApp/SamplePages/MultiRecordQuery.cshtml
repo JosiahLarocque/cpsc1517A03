@@ -2,7 +2,7 @@
     Layout = "~/_Layout.cshtml";
     Page.Title = string.Format("Razor - {0}", "DDL Query");
 
-    var db = Database.Open("NWDB");
+    var db = Database.Open("Northwind_CPSC1517");
     var sqlquery = @"SELECT CategoryID, CategoryName 
                      FROM Categories 
                      ORDER BY CategoryName";
@@ -13,7 +13,7 @@
     <h1>DropDownList Selection Query</h1>
 }
 
-@if(IsPost)
+@if(IsPost) 
 {
     //what was selected?
     var choice = Request.Form["CategoryList"];
