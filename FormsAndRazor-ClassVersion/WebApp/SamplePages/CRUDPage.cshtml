@@ -99,7 +99,7 @@
             //connect to database (done above)
             //create insert command
             var inscommand = @"INSERT INTO Products (ProductName, SupplierID, CategoryId, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued)
-                   VALUES(@0, @2, @3, @4, @5, @6, @7, 0)";
+                   VALUES(@0 ,@1, @2, @3, @4, @5, @6, @7, 0)";
             //execute the command
             productid = db.Execute(inscommand, productname,
                             string.IsNullOrEmpty(supplierid) ? null : supplierid,
