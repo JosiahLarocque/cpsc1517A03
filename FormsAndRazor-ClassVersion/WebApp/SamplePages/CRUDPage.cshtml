@@ -15,7 +15,7 @@
     var thebutton = "";
 
     //obtain two lists: SupplierList and CategoryList
-    var db = Database.Open("Northwind_CPSC1517");
+    var db = Database.Open("NWDB");
     var supplierquery = @"SELECT SupplierID, CompanyName
   FROM Suppliers
   Order by CompanyName";
@@ -150,14 +150,14 @@ else
                 @foreach (var item in supplierlist)
                 {
                     //by default the 1st option
-                    if (supplierid == item.SupplierID.ToString())
+                    if (supplierid == item.SupplierId.ToString())
                     {
                         //this was the last selected ddl item
-                        <option value="@item.SupplierID" selected>@item.CompanyName</option>
+                        <option value="@item.SupplierId" selected>@item.CompanyName</option>
                     }
                     else
                     {
-                        <option value="@item.CategoryID">@item.CompanyName</option>
+                        <option value="@item.CategoryId">@item.CompanyName</option>
                     }
                 }
             </select>
