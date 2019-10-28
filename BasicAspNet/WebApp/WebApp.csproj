@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9BF4769A-F183-40D9-8955-EFD4D5B38CF1}</ProjectGuid>
+    <ProjectGuid>{AFA31E66-C151-4AC9-98BD-52CB67EDAC4F}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -125,6 +125,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="SamplePages\BasicControls.aspx" />
     <Content Include="SamplePages\HelloWorld.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -159,6 +160,7 @@
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DDLClass.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,6 +191,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplePages\BasicControls.aspx.cs">
+      <DependentUpon>BasicControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\BasicControls.aspx.designer.cs">
+      <DependentUpon>BasicControls.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SamplePages\HelloWorld.aspx.cs">
       <DependentUpon>HelloWorld.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,9 +254,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50320</DevelopmentServerPort>
+          <DevelopmentServerPort>58638</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50320/</IISUrl>
+          <IISUrl>http://localhost:58638/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
