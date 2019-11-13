@@ -5,54 +5,59 @@ using System.Text;
 using System.Threading.Tasks;
 
 #region Additional Namespaces
-using System.ComponentModel.DataAnnotations.Schema; //4. allows to reference a table from step 3
-using System.ComponentModel.DataAnnotations; //.6 allows to reference a key from step 5
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 #endregion
 
 namespace NorthwindSystem.Data
 {
-    //syntax [Table("mytablename"[,schema="the sqlschemaname"])]
-    //a schema is a group of tables in a database
-    [Table("Products")]  //3. annotation that will point this class to the appropriate sql table
-    public class Product //1. create class  2. Add "public" to class
-    {
-        //all sql attributes will have a corresponding class property
+    //annotation that will point this class to the appropriate
+    //sql table
+    //sometimes your sql database will be divided into groups;
+    //   these groups are called schemas; you can recongize a
+    //   shcema on a table using by the name ie HumanResources.tablename
+    //IF your database does NOT have shcemas then you OMIT the schema
+    //   attribute
+    //syntax [Table("mytablename"[,Schema="the sqlschemaname"]]
+    //the creation of this class is called MAPPING. You are supplying
+    //    a definition of the sql table to your application
 
+        [Table("Products")]
+    public class Product
+    {
+        //remember the default access of a class is private.
+        //change it to public
+
+        //all sql attributes will have a coresponding class
+        //  property
         //IF you use the attribute name as your property name
-        //   the physical order of the properties do not need to match 
-        //   your sql attr. order
+        //   the phyiscal order of the properties do NOT need to
+        //   match your sql attribute order
 
         //you need a [Key] annotation for your primary key field
-        //[Key] used on an identity PK field:
+        //[Key] used on a identity pkey field
+        //can also be coded as [Key,DataGenerated(DataGeneratedOption.Identity)]
+        //[Key, Column[Order=n]] used for compound primary keys where
+        //    n represents the PHYSICAL order of the components; 
+        //    n starts at 1 (natural number)
+        //[Key,DataGenerated(DataGeneratedOption.None)] used for
+        //    primary keys that are NOT compound OR user supplied (NOT Identity)
 
-        //Default: [Key,DataGenerated(DataGeneratedOption.Identity)]
-
-        //[Key, Column[Order=n]] - used for compound PK's where
-        //      n represents the physical order of the components,
-        //      n starts a 1 (natural number)
-        //[Key,DataGenerated(DataGeneratedOption.None)] - used for 
-        //      PK's no compound or user supplied (NOT Identity)
-
-        [Key] //.5 All below: 
-        //instantiate a field - mapping your sql table to your program
-              //The creation of this class is called mapping. this is how to supply the
-              //definition of the sql table to your application
+        [Key]
         public int ProductID { get; set; }
         public string ProductName { get; set; }
 
-        //There is a foreign key annotation [ForeignKey] BUT it is optionally
+        //there is a foreign key annotation [ForeignKey] BUT is is optionally
         //specifying the annotation is ONLY NEEDED IF your foreign key
-        //      sql field name is not the same as the associated primary key
-        //      field name or if you use a different name in your mapping
-
-        public int? SupplierID { get; set; } //int? (question mark) after means field is nullable
+        //    sql field name is NOT the same as the associated primary key
+        //    field name OR if you use a different name in your mapping
+        public int? SupplierID { get; set; }
         public int? CategoryID { get; set; }
 
         public string QuantityPerUnit { get; set; }
 
         public decimal? UnitPrice { get; set; }
-
-        public Int16? UnitsInStock { get; set; } 
+        public Int16? UnitsInStock { get; set; }
         public Int16? UnitsOnOrder { get; set; }
         public Int16? ReorderLevel { get; set; }
 
@@ -61,17 +66,17 @@ namespace NorthwindSystem.Data
         //optionally you can add your default and/or greedy constructors
 
         //other annotation examples
-        //lets assume you would like to concatenate some fields
-        //      together within your application on several occasions
-        //      such as creating a full name out of two attributes FirstName and LastName
+        //lets assume you would like to concatenate some fields together
+        //    within your application on several occasion such as
+        //    creating a full name out of two attributes FirstName and LastName
 
-        //these are readonly non mapped fields.
-        //these properties do NOT expect data to be given to them
+        //these are ready-only non mapped fields. 
+        //these properties do NOT expect data to the given to them
         //EntityFramework will NOT expect data to be placed into these
-        //      properties to be passed on to the database
+        //    properties to be passed on to the database.
 
-        [NotMapped] //6.
-        public string ProductAndID //7.
+        [NotMapped]
+        public string ProductandID
         {
             get
             {
