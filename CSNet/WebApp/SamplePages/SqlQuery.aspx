@@ -8,12 +8,15 @@
         <br /><br />
         <asp:Label ID="MessageLabel" runat="server" ></asp:Label>
         <br />
-        <asp:GridView ID="ProductList" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="ProductList" runat="server" AutoGenerateColumns="False"
+            CssClass="table table-striped" GridLines="Horizontal" 
+            BorderStyle="None" AllowPaging="True" PageSize="5" OnPageIndexChanging="ProductList_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="ID">
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     <ItemTemplate>
-                        <%# Eval("ProductID") %>
+                        <asp:Label ID="Label4" runat="server" 
+                            Text='<%# Eval("ProductID") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
@@ -23,23 +26,31 @@
                             Text='<%# Eval("ProductName") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="$">
-                    <ItemStyle HorizontalAlign="Right"> </ItemStyle>
+                <asp:TemplateField HeaderText="Qty/Per">
+                    <ItemStyle HorizontalAlign="left"> </ItemStyle>
                     <ItemTemplate>
-                        <%# string.Format("{0:0.00}",Eval("UnitPrice")) %>
+                        <asp:Label ID="Label3" runat="server" 
+                            text='<%# Eval("QuantityPerUnit") == null ? "each" : Eval("QuantityPerUnit") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="$">
+                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" 
+                            Text='<%# Eval("Price") %>'></asp:Label>
                 <asp:TemplateField HeaderText="Disc">
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     <ItemTemplate>
-                        <asp:CheckBox ID="CheckBox1" runat="server"
-                            checked='<%# Eval("Discontinued") %>'/>
+                        <asp:Label ID="Label6" runat="server" 
+                            Text='<%# Eval("Discontinued") %>'></asp:Label>
+                       
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
             <EmptyDataTemplate>
                 No data to display
             </EmptyDataTemplate>
+            <PagerSettings FirstPageText="Start" LastPageText="End" Mode="NumericFirstLast" PageButtonCount="3" />
         </asp:GridView>
     </div>
 </asp:Content>

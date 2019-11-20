@@ -66,5 +66,21 @@ namespace WebApp.SamplePages
                 }
             }
         }
+
+        protected void ProductList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //web controls on events get passed arguments DEPENDING on the control
+            //check your method header to see the argument class type
+            //since the arguments are in class, use appropriate object referencing to
+            //  obtain the data value required
+
+
+            //you MUST set the gridview page index property
+            //the new page index value is located in the supplied event arguments
+            ProductList.PageIndex = e.NewPageIndex;
+
+            //you must refresh your data collection
+            Fetch_Click(sender, new EventArgs());
+        }
     }
 }
