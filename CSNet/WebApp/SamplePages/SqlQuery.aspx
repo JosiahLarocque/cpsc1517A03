@@ -9,14 +9,18 @@
         <asp:Label ID="MessageLabel" runat="server" ></asp:Label>
         <br />
         <asp:GridView ID="ProductList" runat="server" AutoGenerateColumns="False"
-            CssClass="table table-striped" GridLines="Horizontal" 
-            BorderStyle="None" AllowPaging="True" PageSize="5" OnPageIndexChanging="ProductList_PageIndexChanging">
+             CssClass="table table-striped" GridLines="Horizontal" BorderStyle="None" 
+            AllowPaging="True" PageSize="5" 
+            OnPageIndexChanging="ProductList_PageIndexChanging" 
+            OnSelectedIndexChanged="ProductList_SelectedIndexChanged">
             <Columns>
+                <asp:CommandField SelectText="View" ShowSelectButton="True" ButtonType="Button"></asp:CommandField>
                 <asp:TemplateField HeaderText="ID">
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     <ItemTemplate>
-                        <asp:Label ID="Label4" runat="server" 
+                        <asp:Label ID="ProductID" runat="server" 
                             Text='<%# Eval("ProductID") %>'></asp:Label>
+                       
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
@@ -27,23 +31,24 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Qty/Per">
-                    <ItemStyle HorizontalAlign="left"> </ItemStyle>
+                    <ItemStyle HorizontalAlign="Left"> </ItemStyle>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" 
-                            text='<%# Eval("QuantityPerUnit") == null ? "each" : Eval("QuantityPerUnit") %>'></asp:Label>
+                            Text='<%# Eval("QuantityPerUnit") == null ? "each" : Eval("QuantityPerUnit") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="$">
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    <ItemStyle HorizontalAlign="Right"> </ItemStyle>
                     <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" 
-                            Text='<%# Eval("Price") %>'></asp:Label>
+                        <asp:Label ID="Label4" runat="server" 
+                       Text='<%# string.Format("{0:0.00}",Eval("UnitPrice")) %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Disc">
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                     <ItemTemplate>
-                        <asp:Label ID="Label6" runat="server" 
-                            Text='<%# Eval("Discontinued") %>'></asp:Label>
-                       
+                        <asp:CheckBox ID="CheckBox1" runat="server"
+                            checked='<%# Eval("Discontinued") %>'/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

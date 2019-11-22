@@ -20,9 +20,14 @@ namespace WebApp.SamplePages
                 }
                 else
                 {
-                    MessageLabel.Text = "You passed the following data to this page: >" + pid + "<";
+                    MessageLabel.Text = "You pass the following data to this page: >" + pid + "<";
                 }
             }
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SqlQuery.aspx");
         }
     }
 }
