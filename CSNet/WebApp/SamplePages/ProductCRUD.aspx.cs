@@ -16,14 +16,13 @@ namespace WebApp.NorthwindPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //the control being used for error handling display of messages
-            //  is a DataList
+            //the control being use for error handling display of messages
+            //    is a DataList.
             //The clearing of the controls is done by assigning null as
-            //  the collection and binding that empty collection to the
-            //  control
+            //   the collection and binding that empty collection to the
+            //   control
             Message.DataSource = null;
             Message.DataBind();
-            
 
             if (!Page.IsPostBack)
             {
@@ -83,7 +82,7 @@ namespace WebApp.NorthwindPages
         }
         protected void BindSupplierList()
         {
-            //this will be a standard lookup for the Category records
+            //this will be a standard lookup for the Supplier records
             try
             {
                 SupplierController sysmgr = new SupplierController();
@@ -105,7 +104,7 @@ namespace WebApp.NorthwindPages
         }
         protected void BindProductList()
         {
-            //this will be a standard lookup for the Category records
+            //this will be a standard lookup for the Product records
             try
             {
                 ProductController sysmgr = new ProductController();
@@ -138,7 +137,6 @@ namespace WebApp.NorthwindPages
             UnitsOnOrder.Text = "";
             ReorderLevel.Text = "";
             Discontinued.Checked = false;
-
             ProductList.SelectedIndex = 0;
             CategoryList.SelectedIndex = 0;
             SupplierList.SelectedIndex = 0;
@@ -146,9 +144,10 @@ namespace WebApp.NorthwindPages
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            if (CategoryList.SelectedIndex == 0)
+            //standard query
+            if (ProductList.SelectedIndex == 0)
             {
-                errormsgs.Add("Product no longer on file.");
+                errormsgs.Add("Select a product to maintain");
                 LoadMessageDisplay(errormsgs, "alert alert-info");
             }
             else
@@ -157,7 +156,7 @@ namespace WebApp.NorthwindPages
                 try
                 {
                     ProductController sysmgr = new ProductController();
-                    List<Product> info = null;
+                    Product info = null;
                     info = sysmgr.Products_GetByID(int.Parse(ProductList.SelectedValue));
                     if (info == null)
                     {
@@ -170,12 +169,12 @@ namespace WebApp.NorthwindPages
                     }
                     else
                     {
-                        ProductID.Text = info.ProductID.ToString(); ;
+                        ProductID.Text = info.ProductID.ToString();
                         ProductName.Text = info.ProductName;
                         QuantityPerUnit.Text = 
-                            info.QuantityPerUnit == null ? info.QuantityPerUnit : "";
+                            info.QuantityPerUnit == null ? "" : info.QuantityPerUnit;
                         UnitPrice.Text =
-                            info.UnitPrice.HasValue ? string.Format("{0:0.00}", info.UnitPrice.Value) : "";
+                            info.UnitPrice.HasValue ?  string.Format("{0:0.00}", info.UnitPrice.Value) : "";
                         UnitsInStock.Text =
                             info.UnitsInStock.HasValue ? info.UnitsInStock.Value.ToString() : "";
                         UnitsOnOrder.Text =
@@ -200,11 +199,13 @@ namespace WebApp.NorthwindPages
                             SupplierList.SelectedIndex = 0;
                         }
                     }
+                   
 
                 }
                 catch (Exception ex)
                 {
-                    
+                    errormsgs.Add(GetInnerException(ex).ToString());
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
                 }
             }
         }

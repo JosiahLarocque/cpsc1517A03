@@ -30,15 +30,18 @@
         ErrorMessage="Reorder levlel must be between 0 and 32767" Display="None" SetFocusOnError="true" ForeColor="Firebrick"
          ControlToValidate="ReorderLevel"  MaximumValue="32767" MinimumValue="0" Type="Integer"> </asp:RangeValidator>
    
-    <%--Validation Summary Control --%>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server"
-        HeaderText="correct the following concerns with your data."/>
+    <%-- Validation Summary control --%>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
+         HeaderText="correct the following concerns with your data."/>
+
       <%--  this will be the lookup control area--%>
          <div class="col-md-12"> 
              <asp:Label ID="Label5" runat="server" Text="Select a Product"></asp:Label>&nbsp;&nbsp;
              <asp:DropDownList ID="ProductList" runat="server"></asp:DropDownList>&nbsp;&nbsp;
-             <asp:LinkButton ID="Search" runat="server" Font-Size="X-Large" OnClick="Search_Click" CausesValidation="false">Search</asp:LinkButton>&nbsp;&nbsp;
-             <asp:LinkButton ID="Clear" runat="server" Font-Size="X-Large" OnClick="Clear_Click" CausesValidation="false">Clear</asp:LinkButton>&nbsp;&nbsp;
+             <asp:LinkButton ID="Search" runat="server" Font-Size="X-Large" 
+                 OnClick="Search_Click" CausesValidation="false" >Search</asp:LinkButton>&nbsp;&nbsp;
+             <asp:LinkButton ID="Clear" runat="server" Font-Size="X-Large" 
+                 OnClick="Clear_Click" CausesValidation="false" >Clear</asp:LinkButton>&nbsp;&nbsp;
              <asp:LinkButton ID="AddProduct" runat="server" Font-Size="X-Large" >Add</asp:LinkButton>&nbsp;&nbsp;
              <asp:LinkButton ID="UpdateProduct" runat="server" Font-Size="X-Large" >Update</asp:LinkButton>&nbsp;&nbsp;
              <asp:LinkButton ID="RemoveProduct" runat="server" Font-Size="X-Large" >Remove</asp:LinkButton>&nbsp;&nbsp;
