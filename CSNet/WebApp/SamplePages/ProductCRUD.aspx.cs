@@ -33,8 +33,8 @@ namespace WebApp.NorthwindPages
             if (!Page.IsPostBack)
             {
                 BindProductList();
-                BindCategoryList();
-                BindSupplierList();
+                //BindCategoryList();
+                //BindSupplierList();
             }
         }
 
