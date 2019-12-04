@@ -58,7 +58,6 @@ namespace WebApp.SamplePages
                     info.Sort((x, y) => x.ProductName.CompareTo(y.ProductName));
                     ProductList.DataSource = info;
                     ProductList.DataBind();
-
                 }
                 catch (Exception ex)
                 {
